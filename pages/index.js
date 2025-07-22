@@ -13,8 +13,6 @@ export default function Home() {
       <main>
         <Header title="Welcome to Ethio Heroes!" />
       </main>
-
-      <Footer />
     </div>
   )
 }
