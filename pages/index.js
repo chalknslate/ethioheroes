@@ -15,9 +15,6 @@ export default function Home() {
         <title>Ethio Heroes</title>
       </Head>
       <main>
-        <div className="wrapper">
-          <div className="wave"></div>
-        </div>
         <div>
           <Header title="Welcome to Ethio Heroes!" />
           <Subheader title = "Create a persona below."/>
@@ -42,7 +39,8 @@ export default function Home() {
             <label htmlFor="lname">Password:</label><br />
             <input type="password" id="lname" name="lname" required /><br />
 
-            <input type="submit" value="Submit" />
+            <button className="button" type="submit" value="Submit" />
+            
           </form>
         </div>
       </main>

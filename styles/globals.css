@@ -51,7 +51,21 @@ body {
   overflow: hidden;
   z-index: -1;
 }
-
+button {
+  padding      : 5px;
+  font         : bold .6em sans-serif;
+  border       : 2px solid #333;
+  border-radius: 5px;
+  background   : none;
+  cursor       : pointer;
+  transform    : rotate(1.5deg);
+}
+button:hover,
+button:focus {
+  outline     : none;
+  background  : #000;
+  color       : #FFF;
+}
 .wave {
   width: 100%;
   height: 100%;
