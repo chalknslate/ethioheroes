@@ -31,7 +31,7 @@ export default function Home() {
           const data = await res.json();
           alert(data.message || data.error);
         }}>
-          <label htmlFor="fname">First name:</label><br />
+          <label htmlFor="fname">Character Name:</label><br />
           <input type="text" id="fname" name="fname" required /><br />
 
           <label htmlFor="lname">Password:</label><br />
