@@ -33,7 +33,6 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
 }
 
 
@@ -55,6 +54,6 @@ button:focus {
 
 
 @keyframes button {
-  from { transform: rotate(1.5deg);}
+  from { transform: rotate(360deg);}
 }
 
