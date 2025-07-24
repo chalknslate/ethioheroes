@@ -6,6 +6,13 @@ import Draggable from 'react-draggable'  // ✅ Add this import
 export default function Home() {
   return (
     <Draggable handle=".drag-handle">
+      <Draggable handle=".drag-handle">
+      <div className="sun" style={{ position: 'absolute' }}>
+        <main>
+
+        </main>
+      </div>
+    </Draggable>
       <div className="container" style={{ position: 'absolute' }}>
         <Head>
           <title>Ethio Heroes</title>
