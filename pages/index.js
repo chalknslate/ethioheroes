@@ -38,9 +38,9 @@ export default function Home() {
 
             <label htmlFor="lname">Password:</label><br />
             <input type="password" id="lname" name="lname" required /><br />
-
-            <button className="button" type="submit" value="Submit" />
-            
+            <div className="button">
+              <button type="submit">Create Character</button>
+            </div>
           </form>
         </div>
       </main>

@@ -35,22 +35,7 @@ code {
   align-items: center;
 }
 
-body {
-  background: #333;
-}
 
-.wrapper {
-  width: 500px;
-  height: 500px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 5px;
-  background-image: linear-gradient(to top, #99bee9 0%, #c1cbd9 100%);
-  overflow: hidden;
-  z-index: -1;
-}
 button {
   padding      : 5px;
   font         : bold .6em sans-serif;
