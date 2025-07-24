@@ -2,9 +2,9 @@
 import Head from 'next/head'
 import Header from '@components/Header'
 // import Footer from '@components/Footer'
-import { neon } from '@netlify/neon';
+//import { neon } from '@netlify/neon';
 
-const sql = neon();
+//const sql = neon();
 
 export default function Home() {
   return (
