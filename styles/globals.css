@@ -33,6 +33,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: antiquewhite;
 }
 
 
@@ -53,7 +54,4 @@ button:focus {
 }
 
 
-@keyframes button {
-  from { transform: rotate(360deg);}
-}
 
