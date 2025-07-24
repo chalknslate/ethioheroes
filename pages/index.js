@@ -1,6 +1,7 @@
 
 import Head from 'next/head'
 import Header from '@components/Header'
+import Subheader from '@components/Subheader'
 // import Footer from '@components/Footer'
 //import { neon } from '@netlify/neon';
 
@@ -14,6 +15,7 @@ export default function Home() {
       </Head>
       <main>
         <Header title="Welcome to Ethio Heroes!" />
+        <Subheader title = "Create a persona below."/>
         <form action="/action_page.php">
           <label htmlFor="fname">First name:</label><br />
           <input type="text" id="fname" name="fname" defaultValue="John" /><br />
