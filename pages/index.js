@@ -7,11 +7,13 @@ export default function Home() {
   return (
     <Draggable handle=".drag-handle">
       <Draggable handle=".drag-handle">
-      <div className="sun" style={{ position: 'absolute' }}>
-        <main>
+        <div className="drag-handle">
+          <div className="sun" style={{ position: 'absolute' }}>
+            <main>
 
-        </main>
-      </div>
+            </main>
+          </div>
+        </div>
     </Draggable>
       <div className="container" style={{ position: 'absolute' }}>
         <Head>
