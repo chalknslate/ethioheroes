@@ -33,6 +33,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
 }
 
 
