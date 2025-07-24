@@ -1,24 +1,21 @@
-
 import Head from 'next/head'
 import Header from '@components/Header'
 import Subheader from '@components/Subheader'
-// import Footer from '@components/Footer'
-//import { neon } from '@netlify/neon';
-
-//const sql = neon();
+import Draggable from 'react-draggable'  // ✅ Add this import
 
 export default function Home() {
   return (
-    
-    <div className="container">
-      <Head>
-        <title>Ethio Heroes</title>
-      </Head>
-      <main>
-        <div>
-          <Header title="Welcome to Ethio Heroes!" />
-          <Subheader title = "Create a persona below."/>
-                  <form onSubmit={async (e) => {
+    <Draggable handle=".drag-handle">
+      <div className="container" style={{ position: 'absolute' }}>
+        <Head>
+          <title>Ethio Heroes</title>
+        </Head>
+        <main>
+          <div className="drag-handle"> 
+            <Header title="Welcome to Ethio Heroes!" />
+            <Subheader title="Create a persona below." />
+          </div>
+          <form onSubmit={async (e) => {
             e.preventDefault();
             const formData = {
               fname: e.target.fname.value,
@@ -42,10 +39,8 @@ export default function Home() {
               <button type="submit">Create Character</button>
             </div>
           </form>
-        </div>
-      </main>
-        
-    </div>
+        </main>
+      </div>
+    </Draggable>
   )
 }
-
