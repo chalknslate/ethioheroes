@@ -43,7 +43,7 @@ button {
   border-radius: 5px;
   background   : none;
   cursor       : pointer;
-  animation: button 15s infinite linear;
+  animation: button 1s infinite linear;
 }
 button:hover,
 button:focus {
