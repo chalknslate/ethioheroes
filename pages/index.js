@@ -18,7 +18,7 @@ export default function Home() {
         <div class="wrapper">
           <div class="wave"></div>
         </div>
-        <div className="box">
+        <div>
           <Header title="Welcome to Ethio Heroes!" />
           <Subheader title = "Create a persona below."/>
                   <form onSubmit={async (e) => {
