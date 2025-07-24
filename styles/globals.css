@@ -28,12 +28,14 @@ code {
 
 .container {
   position: relative;
+  padding: 4px;
   height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: antiquewhite;
+  border: 2px black 
 }
 
 
