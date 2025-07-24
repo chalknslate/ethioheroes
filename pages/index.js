@@ -15,10 +15,6 @@ export default function Home() {
         <title>Ethio Heroes</title>
       </Head>
       <main>
-        <div class="wrapper">
-          <div class="wave"></div>
-        </div>
-        
         <Header title="Welcome to Ethio Heroes!" />
         <Subheader title = "Create a persona below."/>
                 <form onSubmit={async (e) => {
@@ -45,6 +41,10 @@ export default function Home() {
           <input type="submit" value="Submit" />
         </form>
       </main>
+      <div class="wrapper">
+        <div class="wave"></div>
+      </div>
+        
     </div>
   )
 }
