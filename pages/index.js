@@ -9,10 +9,9 @@ export default function Home() {
     <div className="container">
       <Head>
         <title>Ethio Heroes</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main>
+        <Header title="Welcome to Ethio Heroes!" />
         <form action="/action_page.php">
           <label for="fname">First name:</label>
           <input type="text" id="fname" name="fname" value="John"></input>
@@ -20,8 +19,8 @@ export default function Home() {
           <input type="text" id="lname" name="lname" value="Doe"></input>
           <input type="submit" value="Submit"></input>
         </form>
-        <Header title="Welcome to Ethio Heroes!" />
       </main>
     </div>
+    
   )
 }
