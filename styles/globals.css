@@ -55,6 +55,7 @@ button:focus {
 
 @keyframes button {
   from { transform: rotate(-1.5deg);}
-  from { transform: rotate(1.5deg);}
+  to { transform: rotate(1.5deg);}
+  to { transform: rotate(-1.5deg);}
 }
 
