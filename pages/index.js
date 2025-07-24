@@ -15,8 +15,8 @@ export default function Home() {
         <title>Ethio Heroes</title>
       </Head>
       <main>
-        <div class="wrapper">
-          <div class="wave"></div>
+        <div className="wrapper">
+          <div className="wave"></div>
         </div>
         <div>
           <Header title="Welcome to Ethio Heroes!" />
