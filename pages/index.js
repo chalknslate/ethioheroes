@@ -16,7 +16,7 @@ export default function Home() {
       <main>
         <Header title="Welcome to Ethio Heroes!" />
         <Subheader title = "Create a persona below."/>
-        <form action="/pages/action_page.php">
+        <form action="action_page.php">
           <label htmlFor="fname">First name:</label><br />
           <input type="text" id="fname" name="fname" defaultValue="John" /><br />
           
