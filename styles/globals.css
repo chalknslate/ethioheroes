@@ -51,21 +51,10 @@ button:focus {
   background  : #000;
   color       : #FFF;
 }
-.wave {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: -40%;
-  left: 50%;
-  margin-left: -500px;
-  margin-top: -500px;
-  border-radius: 35%;
-  background: rgba(255, 255, 255, .75);
-  animation: wave 15s infinite linear;
-}
 
-@keyframes wave {
-  from { transform: rotate(15deg);}
-  from { transform: rotate(270deg);}
+
+@keyframes button {
+  from { transform: rotate(-1.5deg);}
+  to { transform: rotate(1.5deg);}
 }
 
