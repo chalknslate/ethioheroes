@@ -23,7 +23,7 @@ export default function Home() {
             lname: e.target.lname.value
           };
 
-          const res = await fetch('/.netlify/functions/create-user', {
+          const res = await fetch('/components/create-user.js', {
             method: 'POST',
             body: JSON.stringify(formData)
           });
