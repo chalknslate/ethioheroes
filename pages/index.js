@@ -13,7 +13,6 @@ export default function Home() {
         <title>Ethio Heroes</title>
       </Head>
       <main>
-        <Header title="Welcome to Ethio Heroes!" />
         <form action="/action_page.php">
           <label htmlFor="fname">First name:</label>
           <input type="text" id="fname" name="fname" defaultValue="John" />
