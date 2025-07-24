@@ -13,12 +13,13 @@ export default function Home() {
         <title>Ethio Heroes</title>
       </Head>
       <main>
+        <Header title="Welcome to Ethio Heroes!" />
         <form action="/action_page.php">
-          <label htmlFor="fname">First name:</label>
-          <input type="text" id="fname" name="fname" defaultValue="John" />
+          <label htmlFor="fname">First name:</label><br />
+          <input type="text" id="fname" name="fname" defaultValue="John" /><br />
           
-          <label htmlFor="lname">Last name:</label>
-          <input type="text" id="lname" name="lname" defaultValue="Doe" />
+          <label htmlFor="lname">Last name:</label><br />
+          <input type="text" id="lname" name="lname" defaultValue="Doe" /><br />
           
           <input type="submit" value="Submit" />
         </form>
