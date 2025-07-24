@@ -35,7 +35,8 @@ code {
   justify-content: center;
   align-items: center;
   background-color: antiquewhite;
-  border: 2px black 
+  border: 2px black;
+  border-radius: 5px;
 }
 
 
