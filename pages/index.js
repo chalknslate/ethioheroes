@@ -9,11 +9,16 @@ import Subheader from '@components/Subheader'
 
 export default function Home() {
   return (
+    
     <div className="container">
       <Head>
         <title>Ethio Heroes</title>
       </Head>
       <main>
+        <div class="wrapper">
+          <div class="wave"></div>
+        </div>
+        
         <Header title="Welcome to Ethio Heroes!" />
         <Subheader title = "Create a persona below."/>
                 <form onSubmit={async (e) => {
