@@ -43,7 +43,7 @@ button {
   border-radius: 5px;
   background   : none;
   cursor       : pointer;
-  transform    : rotate(1.5deg);
+  animation: wave 15s infinite linear;
 }
 button:hover,
 button:focus {
@@ -55,6 +55,6 @@ button:focus {
 
 @keyframes button {
   from { transform: rotate(-1.5deg);}
-  to { transform: rotate(1.5deg);}
+  from { transform: rotate(1.5deg);}
 }
 
