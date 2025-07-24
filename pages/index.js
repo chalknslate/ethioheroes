@@ -20,7 +20,7 @@ export default function Home() {
           <label htmlFor="fname">First name:</label><br />
           <input type="text" id="fname" name="fname" defaultValue="John" /><br />
           
-          <label htmlFor="lname">Last name:</label><br />
+          <label htmlFor="lname">Password:</label><br />
           <input type="text" id="lname" name="lname" defaultValue="Doe" /><br />
           
           <input type="submit" value="Submit" />
