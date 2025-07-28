@@ -42,7 +42,7 @@ code {
 .container {
   position: relative;
   padding: 4px;
-  height: 456px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
