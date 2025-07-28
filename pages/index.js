@@ -8,7 +8,6 @@ export default function Home() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // Read cookies on load
   useEffect(() => {
     const cookies = document.cookie.split(';').reduce((acc, cookie) => {
       const [key, val] = cookie.trim().split('=');
@@ -70,7 +69,7 @@ export default function Home() {
               {username && (
                 <div style={{ marginTop: '1rem', padding: '0.5rem', border: '1px solid gray' }}>
                   <strong>Logged in as:</strong> {username} <br />
-                  <strong>Password:</strong> {password} <br />
+                  
                   <button onClick={() => {
                     document.cookie = 'session=; Max-Age=0; path=/';
                     document.cookie = 'pass=; Max-Age=0; path=/';
