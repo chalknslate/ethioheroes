@@ -31,6 +31,7 @@ export default function Home() {
             <div className="login-handle" style={{ cursor: 'move' }}>
               <Header title="Already got a character?" />
               <Subheader title="Login to your persona." />
+              
               <form onSubmit={async (e) => {
                 e.preventDefault();
                 const formData = {
