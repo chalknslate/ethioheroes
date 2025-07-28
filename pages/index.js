@@ -4,6 +4,20 @@ import Subheader from '@components/Subheader'
 import Draggable from 'react-draggable'  // ✅ Add this import
 
 export default function Home() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  // Parse cookies on load
+  useEffect(() => {
+    const cookies = document.cookie.split(';').reduce((acc, cookie) => {
+      const [key, val] = cookie.trim().split('=');
+      acc[key] = decodeURIComponent(val);
+      return acc;
+    }, {});
+    
+    if (cookies.session) setUsername(cookies.session);
+    if (cookies.pass) setPassword(cookies.pass);
+  }, []);
   return (
     <div>
       <Draggable handle=".drag-handle">
@@ -40,6 +54,21 @@ export default function Home() {
                 <div className="button">
                   <button type="submit">Login</button>
                 </div>
+                <br />
+                {username && (
+                  <div style={{ marginBottom: '1rem', padding: '0.5rem', border: '1px solid gray' }}>
+                    <strong>Logged in as:</strong> {username} <br />
+                    <button onClick={() => {
+                      document.cookie = 'session=; Max-Age=0; path=/';
+                      document.cookie = 'pass=; Max-Age=0; path=/';
+                      setUsername('');
+                      setPassword('');
+                    }}>
+                      Logout
+                    </button>
+                  </div>
+                )}
+                
               </form>
             </div>
           </main>
