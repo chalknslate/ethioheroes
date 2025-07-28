@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from '@components/Header'
 import Subheader from '@components/Subheader'
 import Draggable from 'react-draggable'  // ✅ Add this import
-
+import { useEffect, useState } from 'react'
 export default function Home() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
