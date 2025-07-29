@@ -31,7 +31,7 @@ export default function Home() {
             <div className="login-handle" style={{ cursor: 'move' }}>
               <Header title="Already got a character?" />
               <Subheader title="Login to your persona." />
-              
+
               <form onSubmit={async (e) => {
                 e.preventDefault();
                 const formData = {
@@ -68,7 +68,7 @@ export default function Home() {
               </form>
 
               {username && (
-                <div style={{ marginTop: '1rem', padding: '0.5rem', border: '1px solid gray' }}>
+                <div style={{ marginTop: '1rem', padding: '0.5rem', border: '1px solid gray'}}>
                   <strong>Logged in as:</strong> {username} <br />
                   
                   <button onClick={() => {
