@@ -11,7 +11,7 @@
   "dependencies": {
     "@netlify/plugin-nextjs": "^5.11.6",
     "argon2": "^0.44.0",
-    "next": "^15.0.0",
+    "next": "^16.0.7",
     "pg": "^8.11.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
