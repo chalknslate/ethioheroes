@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "^5.11.6",
+    "@node-rs/argon2": "^2.0.2",
     "argon2": "^0.44.0",
     "next": "^16.0.7",
     "pg": "^8.11.3",
