@@ -43,13 +43,14 @@ code {
   position: relative;
   padding: 4px;
   height: 400px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: antiquewhite;
   border: 3px solid rgb(200, 193, 193);
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 
