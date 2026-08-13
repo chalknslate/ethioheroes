@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Ethio Heroes</title>
+        <title>Fyrhell</title>
       </Head>
 
       {/* Login Form */}
@@ -45,7 +45,7 @@ export default function Home() {
               style={{ cursor: 'move' }}
             >
               <Header title="Already got a character?" />
-              <Subheader title="Login to your persona." />
+              <Subheader title="Login below." />
 
               <form
                 onSubmit={async (e) => {
@@ -154,8 +154,8 @@ export default function Home() {
               className="create-handle"
               style={{ cursor: 'move' }}
             >
-              <Header title="Welcome to Ethio Heroes!" />
-              <Subheader title="Create a persona below." />
+              <Header title="Welcome to Fyrhell!" />
+              <Subheader title="Create a character below." />
 
               <form
                 onSubmit={async (e) => {
