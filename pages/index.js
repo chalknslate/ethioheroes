@@ -28,7 +28,7 @@ export default function Home() {
       <Head>
         <title>Fyrhell</title>
       </Head>
-
+    <div class="fire"></div>
       {/* Login Form */}
       <Draggable handle=".login-handle">
         <div
