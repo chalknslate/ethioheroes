@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Header from '@components/Header'
 import Subheader from '@components/Subheader'
-import Draggable from 'react-draggable'
 import ReactMarkdown from 'react-markdown'
 import { useEffect, useState } from 'react'
 
@@ -10,6 +9,7 @@ export default function Home() {
   const [news, setNews] = useState('')
 
   useEffect(() => {
+    // Read session cookie
     const cookies = document.cookie.split(';').reduce((acc, cookie) => {
       const [key, ...value] = cookie.trim().split('=')
 
@@ -23,11 +23,22 @@ export default function Home() {
     if (cookies.session) {
       setUsername(cookies.session)
     }
-    fetch('../public/news.md')
-      .then((res) => res.text())
-      .then((text) => setNews(text))
+
+    // Load news from /public/news.md
+    fetch('/news.md')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Failed to load news: ${res.status}`)
+        }
+
+        return res.text()
+      })
+      .then((text) => {
+        setNews(text)
+      })
       .catch((err) => {
         console.error('Unable to load news:', err)
+        setNews('Unable to load news.')
       })
   }, [])
 
@@ -36,230 +47,223 @@ export default function Home() {
       <Head>
         <title>Fyrhell</title>
       </Head>
-
+      <div class="fire"></div>
       <div className="desktop">
 
-        {}
-        <Draggable handle=".login-handle">
-          <div className="container login-window">
+        {/* Login */}
+        <div className="container login-window">
+          <Header title="Login" />
 
-            <div
-              className="login-handle"
-              style={{ cursor: 'move' }}
-            >
-              <Header title="Login" />
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault()
 
-              <form
-                onSubmit={async (e) => {
-                  e.preventDefault()
+              const username =
+                e.target.username.value
 
-                  const username = e.target.username.value
-                  const password = e.target.password.value
+              const password =
+                e.target.password.value
 
-                  try {
-                    const res = await fetch(
-                      `/.netlify/functions/search-user?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
-                      {
-                        method: 'GET'
-                      }
-                    )
-
-                    const data = await res.json()
-
-                    if (res.status === 200) {
-                      document.cookie =
-                        `session=${encodeURIComponent(username)}; path=/`
-
-                      setUsername(username)
-                    }
-
-                    alert(data.message || data.error)
-                  } catch (err) {
-                    console.error(err)
-                    alert('Unable to connect to the server.')
+              try {
+                const res = await fetch(
+                  `/.netlify/functions/search-user?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+                  {
+                    method: 'GET'
                   }
+                )
+
+                const data = await res.json()
+
+                if (res.status === 200) {
+                  document.cookie =
+                    `session=${encodeURIComponent(username)}; path=/`
+
+                  setUsername(username)
+                }
+
+                alert(data.message || data.error)
+              } catch (err) {
+                console.error(err)
+                alert(
+                  'Unable to connect to the server.'
+                )
+              }
+            }}
+          >
+            <label htmlFor="login-username">
+              Character Name:
+            </label>
+
+            <br />
+
+            <input
+              type="text"
+              id="login-username"
+              name="username"
+              required
+            />
+
+            <br />
+
+            <label htmlFor="login-password">
+              Password:
+            </label>
+
+            <br />
+
+            <input
+              type="password"
+              id="login-password"
+              name="password"
+              required
+            />
+
+            <br />
+
+            <div className="button">
+              <button type="submit">
+                Login
+              </button>
+            </div>
+          </form>
+
+          {username && (
+            <div
+              style={{
+                marginTop: '1rem',
+                padding: '0.5rem',
+                border: '1px solid gray'
+              }}
+            >
+              <strong>
+                Logged in as:
+              </strong>{' '}
+              {username}
+
+              <br />
+
+              <button
+                onClick={() => {
+                  document.cookie =
+                    'session=; Max-Age=0; path=/'
+
+                  setUsername('')
                 }}
               >
-                <label htmlFor="login-username">
-                  Character Name:
-                </label>
-
-                <br />
-
-                <input
-                  type="text"
-                  id="login-username"
-                  name="username"
-                  required
-                />
-
-                <br />
-
-                <label htmlFor="login-password">
-                  Password:
-                </label>
-
-                <br />
-
-                <input
-                  type="password"
-                  id="login-password"
-                  name="password"
-                  required
-                />
-
-                <br />
-
-                <div className="button">
-                  <button type="submit">
-                    Login
-                  </button>
-                </div>
-              </form>
-
-              {username && (
-                <div
-                  style={{
-                    marginTop: '1rem',
-                    padding: '0.5rem',
-                    border: '1px solid gray'
-                  }}
-                >
-                  <strong>Logged in as:</strong> {username}
-
-                  <br />
-
-                  <button
-                    onClick={() => {
-                      document.cookie =
-                        'session=; Max-Age=0; path=/'
-
-                      setUsername('')
-                    }}
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
+                Logout
+              </button>
             </div>
+          )}
+        </div>
 
-          </div>
-        </Draggable>
 
+        {/* Create Character */}
+        <div className="container create-window">
+          <Header title="Welcome to Fyrhell!" />
 
-        {}
-        <Draggable handle=".create-handle">
-          <div className="container create-window">
+          <Subheader
+            title="Create a character below."
+          />
 
-            <div
-              className="create-handle"
-              style={{ cursor: 'move' }}
-            >
-              <Header title="Welcome to Fyrhell!" />
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault()
 
-              <Subheader title="Create a character below." />
+              const username =
+                e.target.username.value
 
-              <form
-                onSubmit={async (e) => {
-                  e.preventDefault()
+              const password =
+                e.target.password.value
 
-                  const username = e.target.username.value
-                  const password = e.target.password.value
-
-                  try {
-                    const res = await fetch(
-                      '/.netlify/functions/create-user',
-                      {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                          username,
-                          password
-                        })
-                      }
-                    )
-
-                    const data = await res.json()
-
-                    alert(data.message || data.error)
-
-                    if (res.status === 201) {
-                      e.target.reset()
-                    }
-                  } catch (err) {
-                    console.error(err)
-                    alert('Unable to connect to the server.')
+              try {
+                const res = await fetch(
+                  '/.netlify/functions/create-user',
+                  {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type':
+                        'application/json'
+                    },
+                    body: JSON.stringify({
+                      username,
+                      password
+                    })
                   }
-                }}
-              >
-                <label htmlFor="create-username">
-                  Character Name:
-                </label>
+                )
 
-                <br />
+                const data = await res.json()
 
-                <input
-                  type="text"
-                  id="create-username"
-                  name="username"
-                  required
-                />
+                alert(
+                  data.message || data.error
+                )
 
-                <br />
+                if (res.status === 201) {
+                  e.target.reset()
+                }
+              } catch (err) {
+                console.error(err)
 
-                <label htmlFor="create-password">
-                  Password:
-                </label>
+                alert(
+                  'Unable to connect to the server.'
+                )
+              }
+            }}
+          >
+            <label htmlFor="create-username">
+              Character Name:
+            </label>
 
-                <br />
+            <br />
 
-                <input
-                  type="password"
-                  id="create-password"
-                  name="password"
-                  required
-                />
+            <input
+              type="text"
+              id="create-username"
+              name="username"
+              required
+            />
 
-                <br />
+            <br />
 
-                <div className="button">
-                  <button type="submit">
-                    Create Character
-                  </button>
-                </div>
-              </form>
+            <label htmlFor="create-password">
+              Password:
+            </label>
 
+            <br />
+
+            <input
+              type="password"
+              id="create-password"
+              name="password"
+              required
+            />
+
+            <br />
+
+            <div className="button">
+              <button type="submit">
+                Create Character
+              </button>
             </div>
-
-          </div>
-        </Draggable>
+          </form>
+        </div>
 
 
         {/* News */}
-        <Draggable handle=".news-handle">
-          <div className="container news-window">
+        <div className="container news-window">
+          <Header title="Fyrhell News" />
 
-            <div
-              className="news-handle"
-              style={{ cursor: 'move' }}
-            >
-              <Header title="Fyrhell News" />
-
-              <div className="news">
-                {news ? (
-                  <ReactMarkdown>
-                    {news}
-                  </ReactMarkdown>
-                ) : (
-                  <p>Loading news...</p>
-                )}
-              </div>
-            </div>
-
+          <div className="news">
+            {news ? (
+              <ReactMarkdown>
+                {news}
+              </ReactMarkdown>
+            ) : (
+              <p>
+                Loading news...
+              </p>
+            )}
           </div>
-        </Draggable>
+        </div>
 
       </div>
     </>
