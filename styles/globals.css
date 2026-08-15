@@ -50,19 +50,31 @@ code {
 	opacity:0.9;			
 	box-shadow: 0px 0px 40px 15px white;  
 }
-.container {
+.desktop {
   position: relative;
-  padding: 4px;
-  height: 400px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  position: absolute;
+
+  padding: 20px;
+
   width: 400px;
+  min-height: 300px;
+
+  background-color: rgb(103, 98, 91);
+  border: 3px solid rgb(133, 128, 128);
+  border-radius: 0;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: antiquewhite;
-  border: 3px solid rgb(200, 193, 193);
-  border-radius: 0px;
 }
+
 
 
 button {

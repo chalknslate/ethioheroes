@@ -2,10 +2,12 @@ import Head from 'next/head'
 import Header from '@components/Header'
 import Subheader from '@components/Subheader'
 import Draggable from 'react-draggable'
+import ReactMarkdown from 'react-markdown'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [username, setUsername] = useState('')
+  const [news, setNews] = useState('')
 
   useEffect(() => {
     const cookies = document.cookie.split(';').reduce((acc, cookie) => {
@@ -21,31 +23,31 @@ export default function Home() {
     if (cookies.session) {
       setUsername(cookies.session)
     }
+    fetch('/news.md')
+      .then((res) => res.text())
+      .then((text) => setNews(text))
+      .catch((err) => {
+        console.error('Unable to load news:', err)
+      })
   }, [])
 
   return (
-    <div>
+    <>
       <Head>
         <title>Fyrhell</title>
       </Head>
-    <div class="fire"></div>
-      {/* Login Form */}
-      <Draggable handle=".login-handle">
-        <div
-          className="container"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0
-          }}
-        >
-          <main>
+
+      <div className="desktop">
+
+        {}
+        <Draggable handle=".login-handle">
+          <div className="container login-window">
+
             <div
               className="login-handle"
               style={{ cursor: 'move' }}
             >
-              <Header title="Already got a character?" />
-              <Subheader title="Login below." />
+              <Header title="Login" />
 
               <form
                 onSubmit={async (e) => {
@@ -81,6 +83,7 @@ export default function Home() {
                 <label htmlFor="login-username">
                   Character Name:
                 </label>
+
                 <br />
 
                 <input
@@ -89,11 +92,13 @@ export default function Home() {
                   name="username"
                   required
                 />
+
                 <br />
 
                 <label htmlFor="login-password">
                   Password:
                 </label>
+
                 <br />
 
                 <input
@@ -102,6 +107,7 @@ export default function Home() {
                   name="password"
                   required
                 />
+
                 <br />
 
                 <div className="button">
@@ -120,6 +126,7 @@ export default function Home() {
                   }}
                 >
                   <strong>Logged in as:</strong> {username}
+
                   <br />
 
                   <button
@@ -135,26 +142,21 @@ export default function Home() {
                 </div>
               )}
             </div>
-          </main>
-        </div>
-      </Draggable>
 
-      {/* Create Character Form */}
-      <Draggable handle=".create-handle">
-        <div
-          className="container"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 400
-          }}
-        >
-          <main>
+          </div>
+        </Draggable>
+
+
+        {}
+        <Draggable handle=".create-handle">
+          <div className="container create-window">
+
             <div
               className="create-handle"
               style={{ cursor: 'move' }}
             >
               <Header title="Welcome to Fyrhell!" />
+
               <Subheader title="Create a character below." />
 
               <form
@@ -195,6 +197,7 @@ export default function Home() {
                 <label htmlFor="create-username">
                   Character Name:
                 </label>
+
                 <br />
 
                 <input
@@ -203,11 +206,13 @@ export default function Home() {
                   name="username"
                   required
                 />
+
                 <br />
 
                 <label htmlFor="create-password">
                   Password:
                 </label>
+
                 <br />
 
                 <input
@@ -216,6 +221,7 @@ export default function Home() {
                   name="password"
                   required
                 />
+
                 <br />
 
                 <div className="button">
@@ -224,10 +230,38 @@ export default function Home() {
                   </button>
                 </div>
               </form>
+
             </div>
-          </main>
-        </div>
-      </Draggable>
-    </div>
+
+          </div>
+        </Draggable>
+
+
+        {/* News */}
+        <Draggable handle=".news-handle">
+          <div className="container news-window">
+
+            <div
+              className="news-handle"
+              style={{ cursor: 'move' }}
+            >
+              <Header title="Fyrhell News" />
+
+              <div className="news">
+                {news ? (
+                  <ReactMarkdown>
+                    {news}
+                  </ReactMarkdown>
+                ) : (
+                  <p>Loading news...</p>
+                )}
+              </div>
+            </div>
+
+          </div>
+        </Draggable>
+
+      </div>
+    </>
   )
 }
