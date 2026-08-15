@@ -62,7 +62,7 @@ code {
 
   padding: 20px;
 
-  width: 400px;
+  min-width: 200px;
   min-height: 300px;
 
   background-color: rgb(103, 98, 91);
@@ -76,6 +76,21 @@ code {
 }
 
 
+.login-window {
+  left: calc(50% - 410px);
+  top: calc(50% - 150px);
+}
+
+.create-window {
+  left: calc(50% + 10px);
+  top: calc(50% - 150px);
+}
+
+.news-window {
+  left: 50%;
+  top: calc(50% + 180px);
+  transform: translateX(-50%);
+}
 
 button {
   padding      : 5px;
