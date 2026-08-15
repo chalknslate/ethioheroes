@@ -23,7 +23,7 @@ export default function Home() {
     if (cookies.session) {
       setUsername(cookies.session)
     }
-    fetch('/news.md')
+    fetch('../public/news.md')
       .then((res) => res.text())
       .then((text) => setNews(text))
       .catch((err) => {
