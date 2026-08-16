@@ -94,11 +94,11 @@ code {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 32px;
+  width: 64px;
 
   background-image: url("../public/stonepillar.png");
   background-repeat: repeat-y;
-  background-size: 32px 32px;
+  background-size: 64px 64px;
 }
 
 .stone-pillar.left {
