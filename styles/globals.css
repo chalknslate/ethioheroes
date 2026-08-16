@@ -87,7 +87,7 @@ code {
 
 .news-window {
   left: 50%;
-  top: calc(50%-100px);
+  top: calc(50%-25px);
   transform: translateX(-50%);
 }
 

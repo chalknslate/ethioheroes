@@ -36,7 +36,7 @@ export default function Home() {
         className="account-button"
         onClick={() => router.push('/account')}
       >
-        Account
+        <h2>Account</h2>
       </button>
 
       <main className="home">
