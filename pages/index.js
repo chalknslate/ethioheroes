@@ -53,6 +53,9 @@ export default function Home() {
             )}
           </div>
         </div>
+        <div className="stone-pillar left"></div>
+        <div className="stone-pillar right"></div>
+        <div class="fire"></div>
       </main>
     </>
   )

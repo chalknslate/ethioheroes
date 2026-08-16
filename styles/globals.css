@@ -90,7 +90,24 @@ code {
   top: calc(50%-25px);
   transform: translateX(-50%);
 }
+.stone-pillar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 32px;
 
+  background-image: url("../public/stonepillar.png");
+  background-repeat: repeat-y;
+  background-size: 32px 32px;
+}
+
+.stone-pillar.left {
+  left: 0;
+}
+
+.stone-pillar.right {
+  right: 0;
+}
 button {
   padding      : 5px;
   font         : bold .6em sans-serif;
