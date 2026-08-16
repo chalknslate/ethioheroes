@@ -36,7 +36,12 @@ export default function Account() {
 
 
       <main className="account-page">
-
+        <button
+          className="home-button"
+          onClick={() => router.push('/')}
+        >
+          <h3>Home</h3>
+        </button>
         {/* Login */}
         <div className="container login-window">
           <Header title="Login" />
@@ -237,7 +242,7 @@ export default function Account() {
         </div>
         <div className="stone-pillar left"></div>
         <div className="stone-pillar right"></div>   
-        <div class="fire"></div> 
+        <div className="fire"></div> 
         <button
           className="home-button"
           onClick={() => router.push('/')}

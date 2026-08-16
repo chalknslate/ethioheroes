@@ -116,6 +116,7 @@ button {
   background-repeat: repeat;
   cursor       : pointer;
   animation: button 1s infinite linear;
+  z-index: 30;
 }
 button:hover,
 button:focus {
