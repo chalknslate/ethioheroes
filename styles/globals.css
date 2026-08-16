@@ -94,9 +94,9 @@ code {
 button {
   padding      : 5px;
   font         : bold .6em sans-serif;
-  border       : 2px solid #333;
-  border-radius: 5px;
-  background   : none;
+  border       : 2px solid #5e5a5a;
+  background-image: url("../public/stonebackground.png");
+  background-repeat: repeat;
   cursor       : pointer;
   animation: button 1s infinite linear;
 }
