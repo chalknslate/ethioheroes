@@ -32,12 +32,6 @@ export default function Home() {
         <title>Fyrhell</title>
       </Head>
 
-      <button
-        className="account-button"
-        onClick={() => router.push('/account')}
-      >
-        <h2>Account</h2>
-      </button>
 
       <main className="home">
         <div className="container news-window">
@@ -56,6 +50,12 @@ export default function Home() {
         <div className="stone-pillar left"></div>
         <div className="stone-pillar right"></div>
         <div class="fire"></div>
+        <button
+          className="account-button"
+          onClick={() => router.push('/account')}
+        >
+          <h2>Account</h2>
+        </button>
       </main>
     </>
   )

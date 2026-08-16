@@ -34,12 +34,6 @@ export default function Account() {
         <title>Fyrhell - Account</title>
       </Head>
 
-      <button
-        className="home-button"
-        onClick={() => router.push('/')}
-      >
-        Home
-      </button>
 
       <main className="account-page">
 
@@ -244,6 +238,12 @@ export default function Account() {
         <div className="stone-pillar left"></div>
         <div className="stone-pillar right"></div>   
         <div class="fire"></div> 
+        <button
+          className="home-button"
+          onClick={() => router.push('/')}
+        >
+          <h3>Home</h3>
+        </button>
       </main>
     </>
   )

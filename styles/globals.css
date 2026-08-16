@@ -28,7 +28,7 @@ main {
   height: 96px;
 
   background: url("../public/fire.gif") repeat-x bottom left;
-  background-size: 64px 96px;
+  background-size: calc(100%/18) 96px;
 }
 code {
   background: #e2e8f0;
