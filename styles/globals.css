@@ -1,129 +1,38 @@
-html,
 body {
-  background-color:#a7d6e7;
-  padding: 0;
   margin: 0;
-  background-image: url("../public/stonebackground.png");
-  background-repeat: repeat;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-* {
-  box-sizing: border-box;
+  padding: 0;
+  background-color: powderblue;
+  font-family: "Inknut Antiqua", serif;
 }
 
-main {
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.hero {
+  height: 200px;
+  background-color: white;
+  border-bottom: 2px solid black;
 }
-.fire {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+
+.button-container {
+  display: flex;
   width: 100%;
-  height: 96px;
-
-  background: url("../public/fire.gif") repeat-x bottom left;
-  background-size: calc(100%/18) 96px;
-}
-code {
-  background: #e2e8f0;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-family: Menlo, Monaco, Lucida Console, Courier New, monospace;
-}
-.sun { 
-  position: absolute;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-	margin: auto;  
-	width:70px;
-	height:70px;
-	border-radius:50%;	
-	background:white;
-	opacity:0.9;			
-	box-shadow: 0px 0px 40px 15px white;  
-}
-.desktop {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  gap: 4px;
 }
 
-.container {
-  position: absolute;
+.button {
+  flex: 1;
+  height: 32px;
+  min-width: 0;
+  margin-top: 2px;
+  padding: 4px;
+  text-decoration: none;
+  background-color: white;
+  border: 0;
+  border-radius: 4px;
 
-  padding: 20px;
-
-  min-width: 200px;
-  min-height: 300px;
-
-  background-color: rgb(103, 98, 91);
-  border: 3px solid rgb(133, 128, 128);
-  border-radius: 0;
-
+  font-family: "Inknut Antiqua", serif;
+  font-size: clamp(12px, 2vw, 24px);
+  
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-
-
-.login-window {
-  left: calc(50% - 410px);
-  top: calc(50% - 150px);
-}
-
-.create-window {
-  left: calc(50% + 10px);
-  top: calc(50% - 150px);
-}
-
-.news-window {
-  left: 50%;
-  top: calc(50%-25px);
-  transform: translateX(-50%);
-}
-.stone-pillar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 64px;
-
-  background-image: url("../public/stonepillar.png");
-  background-repeat: repeat-y;
-  background-size: 64px 64px;
-}
-
-.stone-pillar.left {
-  left: 0;
-}
-
-.stone-pillar.right {
-  right: 0;
-}
-button {
-  padding      : 5px;
-  font         : bold .6em sans-serif;
-  border       : 2px solid #5e5a5a;
-  background-image: url("../public/stonebackground.png");
-  background-repeat: repeat;
-  cursor       : pointer;
-  animation: button 1s infinite linear;
-  z-index: 30;
-}
-button:hover,
-button:focus {
-  outline     : none;
-  background  : #000;
-  color       : #FFF;
-}
-
-
-

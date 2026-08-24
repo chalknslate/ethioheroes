@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Header from '@components/Header'
-import Subheader from '@components/Subheader'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -12,12 +10,10 @@ export default function Account() {
     const cookies = document.cookie
       .split(';')
       .reduce((acc, cookie) => {
-        const [key, ...value] =
-          cookie.trim().split('=')
+        const [key, ...value] = cookie.trim().split('=')
 
         if (key) {
-          acc[key] =
-            decodeURIComponent(value.join('='))
+          acc[key] = decodeURIComponent(value.join('='))
         }
 
         return acc
@@ -32,223 +28,238 @@ export default function Account() {
     <>
       <Head>
         <title>Fyrhell - Account</title>
+
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
-
       <main className="account-page">
-        <button
-          className="home-button"
-          onClick={() => router.push('/')}
-        >
-          <h3>Home</h3>
-        </button>
-        {/* Login */}
-        <div className="container login-window">
-          <Header title="Login" />
 
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault()
+        {/* Top UI */}
+        <div className="hero"></div>
 
-              const username =
-                e.target.username.value
-
-              const password =
-                e.target.password.value
-
-              try {
-                const res = await fetch(
-                  `/.netlify/functions/search-user?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
-                  {
-                    method: 'GET'
-                  }
-                )
-
-                const data = await res.json()
-
-                if (res.status === 200) {
-                  document.cookie =
-                    `session=${encodeURIComponent(username)}; path=/`
-
-                  setUsername(username)
-                }
-
-                alert(
-                  data.message || data.error
-                )
-              } catch (err) {
-                console.error(err)
-
-                alert(
-                  'Unable to connect to the server.'
-                )
-              }
-            }}
+        <div className="button-container">
+          <button
+            className="button"
+            onClick={() => router.push('/')}
           >
-            <label htmlFor="login-username">
-              Character Name:
-            </label>
+            Home
+          </button>
 
-            <br />
+          <button
+            className="button"
+            onClick={() => router.push('/account')}
+          >
+            Account Creation
+          </button>
 
-            <input
-              type="text"
-              id="login-username"
-              name="username"
-              required
-            />
+          <button
+            className="button"
+            onClick={() => router.push('/houses')}
+          >
+            Lordly Houses
+          </button>
 
-            <br />
+          <button
+            className="button"
+            onClick={() => router.push('/map')}
+          >
+            Map
+          </button>
+        </div>
 
-            <label htmlFor="login-password">
-              Password:
-            </label>
 
-            <br />
+        {/* Account Forms */}
+        <div className="account-content">
 
-            <input
-              type="password"
-              id="login-password"
-              name="password"
-              required
-            />
+          {/* Login */}
+          <div className="account-box login-box">
+            <h2>Login</h2>
 
-            <br />
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault()
 
-            <div className="button">
-              <button type="submit">
-                Login
-              </button>
-            </div>
-          </form>
+                const username =
+                  e.target.username.value
 
-          {username && (
-            <div
-              style={{
-                marginTop: '1rem',
-                padding: '0.5rem',
-                border: '1px solid gray'
+                const password =
+                  e.target.password.value
+
+                try {
+                  const res = await fetch(
+                    `/.netlify/functions/search-user?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+                    {
+                      method: 'GET'
+                    }
+                  )
+
+                  const data = await res.json()
+
+                  if (res.status === 200) {
+                    document.cookie =
+                      `session=${encodeURIComponent(username)}; path=/`
+
+                    setUsername(username)
+                  }
+
+                  alert(data.message || data.error)
+                } catch (err) {
+                  console.error(err)
+
+                  alert(
+                    'Unable to connect to the server.'
+                  )
+                }
               }}
             >
-              <strong>
-                Logged in as:
-              </strong>{' '}
-              {username}
+              <label htmlFor="login-username">
+                Character Name:
+              </label>
 
-              <br />
+              <input
+                type="text"
+                id="login-username"
+                name="username"
+                required
+              />
+
+              <label htmlFor="login-password">
+                Password:
+              </label>
+
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                required
+              />
 
               <button
-                onClick={() => {
-                  document.cookie =
-                    'session=; Max-Age=0; path=/'
-
-                  setUsername('')
-                }}
+                className="form-button"
+                type="submit"
               >
-                Logout
+                Login
               </button>
-            </div>
-          )}
-        </div>
+            </form>
 
-        {/* Create Character */}
-        <div className="container create-window">
-          <Header title="Welcome to Fyrhell!" />
+            {username && (
+              <div className="logged-in">
+                <strong>Logged in as:</strong>{' '}
+                {username}
 
-          <Subheader
-            title="Create a character below."
-          />
+                <button
+                  onClick={() => {
+                    document.cookie =
+                      'session=; Max-Age=0; path=/'
 
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault()
+                    setUsername('')
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
 
-              const username =
-                e.target.username.value
 
-              const password =
-                e.target.password.value
+          {/* Create Character */}
+          <div className="account-box create-box">
+            <h2>Create Character</h2>
 
-              try {
-                const res = await fetch(
-                  '/.netlify/functions/create-user',
-                  {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type':
-                        'application/json'
-                    },
-                    body: JSON.stringify({
-                      username,
-                      password
-                    })
+            <p>Create a character below.</p>
+
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault()
+
+                const username =
+                  e.target.username.value
+
+                const password =
+                  e.target.password.value
+
+                try {
+                  const res = await fetch(
+                    '/.netlify/functions/create-user',
+                    {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type':
+                          'application/json'
+                      },
+                      body: JSON.stringify({
+                        username,
+                        password
+                      })
+                    }
+                  )
+
+                  const data = await res.json()
+
+                  alert(
+                    data.message || data.error
+                  )
+
+                  if (res.status === 201) {
+                    e.target.reset()
                   }
-                )
+                } catch (err) {
+                  console.error(err)
 
-                const data = await res.json()
-
-                alert(
-                  data.message || data.error
-                )
-
-                if (res.status === 201) {
-                  e.target.reset()
+                  alert(
+                    'Unable to connect to the server.'
+                  )
                 }
-              } catch (err) {
-                console.error(err)
+              }}
+            >
+              <label htmlFor="create-username">
+                Character Name:
+              </label>
 
-                alert(
-                  'Unable to connect to the server.'
-                )
-              }
-            }}
-          >
-            <label htmlFor="create-username">
-              Character Name:
-            </label>
+              <input
+                type="text"
+                id="create-username"
+                name="username"
+                required
+              />
 
-            <br />
+              <label htmlFor="create-password">
+                Password:
+              </label>
 
-            <input
-              type="text"
-              id="create-username"
-              name="username"
-              required
-            />
+              <input
+                type="password"
+                id="create-password"
+                name="password"
+                required
+              />
 
-            <br />
-
-            <label htmlFor="create-password">
-              Password:
-            </label>
-
-            <br />
-
-            <input
-              type="password"
-              id="create-password"
-              name="password"
-              required
-            />
-
-            <br />
-
-            <div className="button">
-              <button type="submit">
+              <button
+                className="form-button"
+                type="submit"
+              >
                 Create Character
               </button>
-            </div>
-          </form>
+            </form>
+          </div>
+
         </div>
-        <div className="stone-pillar left"></div>
-        <div className="stone-pillar right"></div>   
-        <div className="fire"></div> 
-        <button
-          className="home-button"
-          onClick={() => router.push('/')}
-        >
-          <h3>Home</h3>
-        </button>
+
       </main>
     </>
   )
