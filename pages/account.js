@@ -37,7 +37,7 @@ export default function Account() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
-          href="https://fonts.gstatic.com"
+          href="https://fonts.googleapis.com"
           crossOrigin="anonymous"
         />
 
@@ -49,10 +49,12 @@ export default function Account() {
 
       <main className="account-page">
 
-        {/* Top UI */}
+        {/* Hero */}
         <div className="hero"></div>
 
+        {/* Top Navigation */}
         <div className="button-container">
+
           <button
             className="button"
             onClick={() => router.push('/')}
@@ -80,14 +82,16 @@ export default function Account() {
           >
             Map
           </button>
+
         </div>
 
 
-        {/* Account Forms */}
+        {/* Account Containers */}
         <div className="account-content">
 
           {/* Login */}
-          <div className="account-box login-box">
+          <div className="container login-window">
+
             <h2>Login</h2>
 
             <form
@@ -118,6 +122,7 @@ export default function Account() {
                   }
 
                   alert(data.message || data.error)
+
                 } catch (err) {
                   console.error(err)
 
@@ -127,6 +132,7 @@ export default function Account() {
                 }
               }}
             >
+
               <label htmlFor="login-username">
                 Character Name:
               </label>
@@ -149,18 +155,24 @@ export default function Account() {
                 required
               />
 
-              <button
-                className="form-button"
-                type="submit"
-              >
-                Login
-              </button>
+              <div className="button">
+                <button type="submit">
+                  Login
+                </button>
+              </div>
+
             </form>
 
             {username && (
               <div className="logged-in">
-                <strong>Logged in as:</strong>{' '}
+
+                <strong>
+                  Logged in as:
+                </strong>{' '}
+
                 {username}
+
+                <br />
 
                 <button
                   onClick={() => {
@@ -172,16 +184,21 @@ export default function Account() {
                 >
                   Logout
                 </button>
+
               </div>
             )}
+
           </div>
 
 
           {/* Create Character */}
-          <div className="account-box create-box">
+          <div className="container create-window">
+
             <h2>Create Character</h2>
 
-            <p>Create a character below.</p>
+            <p>
+              Create a character below.
+            </p>
 
             <form
               onSubmit={async (e) => {
@@ -218,6 +235,7 @@ export default function Account() {
                   if (res.status === 201) {
                     e.target.reset()
                   }
+
                 } catch (err) {
                   console.error(err)
 
@@ -227,6 +245,7 @@ export default function Account() {
                 }
               }}
             >
+
               <label htmlFor="create-username">
                 Character Name:
               </label>
@@ -249,13 +268,14 @@ export default function Account() {
                 required
               />
 
-              <button
-                className="form-button"
-                type="submit"
-              >
-                Create Character
-              </button>
+              <div className="button">
+                <button type="submit">
+                  Create Character
+                </button>
+              </div>
+
             </form>
+
           </div>
 
         </div>
