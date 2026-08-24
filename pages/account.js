@@ -48,11 +48,7 @@ export default function Account() {
       </Head>
 
       <main className="account-page">
-
-        {/* Hero */}
         <div className="hero"></div>
-
-        {/* Top Navigation */}
         <div className="button-container">
 
           <button
@@ -84,12 +80,7 @@ export default function Account() {
           </button>
 
         </div>
-
-
-        {/* Account Containers */}
         <div className="account-content">
-
-          {/* Login */}
           <div className="container login-window">
 
             <h2>Login</h2>
@@ -155,7 +146,7 @@ export default function Account() {
                 required
               />
 
-              <div className="button">
+              <div className="form-button">
                 <button type="submit">
                   Login
                 </button>
@@ -189,9 +180,6 @@ export default function Account() {
             )}
 
           </div>
-
-
-          {/* Create Character */}
           <div className="container create-window">
 
             <h2>Create Character</h2>
@@ -268,7 +256,7 @@ export default function Account() {
                 required
               />
 
-              <div className="button">
+              <div className="form-button">
                 <button type="submit">
                   Create Character
                 </button>
